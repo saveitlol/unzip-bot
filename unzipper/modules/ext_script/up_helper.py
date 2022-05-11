@@ -38,7 +38,7 @@ async def send_file(unzip_bot, c_id, doc_f, query, full_path):
             await unzip_bot.send_video(chat_id=c_id, video=doc_f, caption=Messages.EXT_CAPTION.format(fname), duration=int(vid_duration) if vid_duration.isnumeric() else 0, thumb=str(thumb))
         else:
             fname = os.path.basename(doc_f)
-            await unzip_bot.send_document(chat_id=c_id, document=doc_f, caption=Messages.EXT_CAPTION.format(fname))
+            await unzip_bot.send_video(chat_id=c_id, video=doc_f, caption=Messages.EXT_CAPTION.format(fname))
         os.remove(doc_f)
     except FloodWait as f:
         asyncio.sleep(f.x)
